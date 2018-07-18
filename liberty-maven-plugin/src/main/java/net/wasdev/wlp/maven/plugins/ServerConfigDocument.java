@@ -262,6 +262,12 @@ public class ServerConfigDocument {
     }
 
     private static void parseDropinsFile(File file) throws IOException, XPathExpressionException, SAXException {
+
+        if (file.getName().equals(ApplicationXmlDocument.APP_XML_FILENAME)) {
+            log.info("Skipping file: " + file.getCanonicalPath() + " generated from previous execution of this plugin");
+            return;
+        }
+
         // get input XML Document
         Document doc = parseDropinsXMLFile(file);
         if (doc != null) {
