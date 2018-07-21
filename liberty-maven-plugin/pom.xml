@@ -86,6 +86,11 @@
                             <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                             <properties>
                                 <libertyInstallDir>${libertyInstallDir}</libertyInstallDir>
+                                <runtime>${runtime}</runtime>
+                                <runtimeGroupId>${runtimeGroupId}</runtimeGroupId>
+                                <runtimeArtifactId>${runtimeArtifactId}</runtimeArtifactId>
+                                <runtimeKernelId>${runtimeKernelId}</runtimeKernelId>
+                                <runtimeVersion>${runtimeVersion}</runtimeVersion>
                             </properties>
                             <profiles>
                                 <profile>offline-its</profile>
