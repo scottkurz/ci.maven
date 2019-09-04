@@ -31,7 +31,7 @@ import org.codehaus.mojo.pluginsupport.util.ArtifactItem;
 
 import io.openliberty.tools.common.plugins.config.ApplicationXmlDocument;
 import io.openliberty.tools.common.plugins.config.LooseConfigData;
-import io.openliberty.tools.maven.ServerConfigDocument;
+import io.openliberty.tools.common.plugins.config.ServerConfigDocument;
 import io.openliberty.tools.maven.utils.SpringBootUtil;
 
 /**

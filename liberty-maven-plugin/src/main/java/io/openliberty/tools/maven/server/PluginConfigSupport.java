@@ -31,7 +31,8 @@ import org.sonatype.plexus.build.incremental.BuildContext;
 
 import io.openliberty.tools.common.plugins.config.ApplicationXmlDocument;
 import io.openliberty.tools.maven.PluginConfigXmlDocument;
-import io.openliberty.tools.maven.ServerConfigDocument;
+import io.openliberty.tools.maven.utils.CommonLogger;
+import io.openliberty.tools.common.plugins.config.ServerConfigDocument;
 
 /**
  * Basic Liberty Mojo Support
@@ -299,7 +300,7 @@ public class PluginConfigSupport extends StartDebugMojoSupport {
 
         if (serverXML != null && serverXML.exists()) {
             try {
-                scd = ServerConfigDocument.getInstance(log, serverXML, configDirectory,
+                scd = ServerConfigDocument.getInstance(CommonLogger.getInstance(), serverXML, configDirectory,
                         bootstrapPropertiesFile, bootstrapProperties, serverEnvFile);
             } catch (Exception e) {
                 log.warn(e.getLocalizedMessage());
