@@ -118,6 +118,7 @@ public class BaseDevTest {
 
          stopDevMode();
 
+	 /*
          if (tempProj != null && tempProj.exists()) {
             FileUtils.deleteDirectory(tempProj);
          }
@@ -125,6 +126,7 @@ public class BaseDevTest {
          if (logFile != null && logFile.exists()) {
             assertTrue(logFile.delete());
          }
+	 */
       }
    }
 
