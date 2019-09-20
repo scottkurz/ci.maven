@@ -48,6 +48,8 @@ public class MPStarterTest extends BaseDevTest {
 
       assertFalse(checkLogMessage(10000,  "Unit tests finished."));
       assertFalse(checkLogMessage(2000,  "Integration tests finished."));
+
+      assertTrue("Found CWWKM2179W message indicating incorrect app deployment", checkLogMessage(2000,  "CWWKM2179W"));
    }
 
    @AfterClass
