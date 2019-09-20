@@ -56,6 +56,10 @@ public class BaseDevTest {
    static Process process;
 
    protected static void setUpBeforeClass(String devModeParams) throws IOException, InterruptedException, FileNotFoundException {
+   	setUpBeforeClass(devModeParams, "../resources/basic-dev-project");
+   }
+   protected static void setUpBeforeClass(String devModeParams, String projectRoot) throws IOException, InterruptedException, FileNotFoundException {
+      basicDevProj = new File(projectRoot);
       String os = System.getProperty("os.name");
       if (os != null && os.toLowerCase().startsWith("windows")) {
          isWindows = true;
@@ -64,9 +68,9 @@ public class BaseDevTest {
       if (!isWindows) { // skip tests on windows until server.env bug is fixed
 
          tempProj = Files.createTempDirectory("temp").toFile();
+	 System.out.println("SKSK: temp =" + tempProj);
          assertTrue(tempProj.exists());
 
-         basicDevProj = new File("../resources/basic-dev-project");
          assertTrue(basicDevProj.exists());
 
          FileUtils.copyDirectoryStructure(basicDevProj, tempProj);
