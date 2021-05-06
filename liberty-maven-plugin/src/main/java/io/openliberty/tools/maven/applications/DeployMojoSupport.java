@@ -166,6 +166,21 @@ public class DeployMojoSupport extends PluginConfigSupport {
 
             // Don't especially need to run it exactly here, but in debugger we can see what we have
             runExplodedMojo();
+            
+            //////////////////////////
+            // Per doc: https://www.ibm.com/docs/en/was-liberty/base?topic=liberty-loose-applications
+            // ".. If you have two files with the same target location in the loose archive, the first occurrence of the file is used. 
+            //    The first occurrence is based on a top-down approach to reading the elements of the loose application configuration file..."
+            //
+            // In order to dynamically reflect changes in non-filtered web app source, this needs to go AFTER the unfiltered source entries above, since 
+            // changes in these un-monitored directories will NOT cause a new 'exploded' goal execution, so the updated content in the unmonitored source will
+            // now be newer than the stale data in the webapp dir folder.
+            //
+            // Might need more consideration in special case where filteringDD is disabled but also a webResources resource is set up for the war source dir (to get non-DD stuff like beans.xml).
+            //
+            // Perhaps this is a special case we can document "don't do this"..or perhaps the war source dir (default = src/main/webapp) should ALWAYS be monitored, and only extra web resources directories should
+            // be subject to the test of monitoring only if filtering is enabled.
+            //////////////////////////
             looseWar.addOutputDir(looseWar.getDocumentRoot(), looseWar.getWebAppDirectory(), "/");
             
         } else {
